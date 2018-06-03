@@ -53,15 +53,21 @@ body{
 
 .mainarea {
     position: relative;
-    width: 94%;
+    width: 30%;
+    top: 50px;
     margin:0px auto;
     text-align:center;
+
 }
+
 
 table {
     position: relative;
+    width: 350px;
+    border: 0px;
     top: 50px;
-    margin:0px auto;
+    cellpadding: 0px;
+    cellspacing: 0px;
 }
 
 /*FOOTER*/
@@ -80,3 +86,5 @@ table {
 p span{
     color: #FFFFFF;
 }
+
+/*Verification Code*/

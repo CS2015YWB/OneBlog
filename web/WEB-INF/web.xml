@@ -3,12 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <display-name>OneBlog</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!--添加配置 Struts2 框架的核心控制器-->
     <filter>
+        <!--过滤器名-->
         <filter-name>struts2</filter-name>
+        <!--添加配置 Struts2 的核心控制器的实现类（注意：自动生成的路径有误，删去'.ng'）-->
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
+    <!--让 Struts2 的核心控制器拦截所有请求-->
     <filter-mapping>
+        <!--过滤器名-->
         <filter-name>struts2</filter-name>
+        <!--匹配所有请求-->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.jsp</location>
+    </error-page>
 </web-app>

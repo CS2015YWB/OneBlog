@@ -37,25 +37,30 @@
     <div class="container-fluid context">
         <div class="row mainarea">
             <h2 class="title">用户注册</h2>
-            <form action="http://localhost/signup" method="post">
+            <form action="signup.action" method="post">
                 <table>
                     <tr>
-                        <td>账号:</td>
-                        <td><input type="text" name="username" size="20"/></td>
+                        <td width="100" height="40" align="right" valign="middle">用户名:</td>
+                        <td width="250" align="right" valign="middle">
+                            <input type="text" name="userName"/>
+                        </td>
                     </tr>
                     <tr>
-                        <td>密码:</td>
-                        <td><input type="password" name="pwd" size="20"/></td>
+                        <td width="100" height="40" align="right" valign="middle">密码:</td>
+                        <td width="250" align="right" valign="middle">
+                            <input type="password" name="password1"/>
+                        </td>
                     </tr>
                     <tr>
-                        <td>确认: </td>
-                        <td><input type="password"name="pwd2" size="20"/></td>
+                        <td width="100" height="40" align="right" valign="middle">确认: </td>
+                        <td width="250" align="right" valign="middle">
+                            <input type="password"name="password2"/>
+                        </td>
                     </tr>
-                        <td><img src="checkcode.jsp"/></td>
-                        <td><input type="text" name="code"/></td>
                     <tr>
-                        <td><input type="submit" value="注 册"/></td>
-                        <td><input type="reset" value="重 置"/></td>
+                        <td height="50" colspan="2" align="center" valign="middle">
+                            <input type="submit" value="注 册"/>
+                        </td>
                     </tr>
                 </table>
             </form>

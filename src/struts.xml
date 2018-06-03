@@ -4,10 +4,17 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
+<!--suppress ALL -->
 <struts>
-    <package name="test" extends="struts-default">
-        <action name="index" class="test.TestAction">
-            <result name="success">index.jsp</result>
+    <package name="oneblog" namespace="/" extends="struts-default">
+        <action name="signin" class="com.oneblog.action.SigninAction">
+            <result name="success">signinsuccess.jsp</result>
+            <result name="input">signin.jsp</result>
+        </action>
+        <action name="signup" class="com.oneblog.action.SignupAction">
+            <result name="success">signupsuccess.jsp</result>
+            <result name="error">signup.jsp</result>
+            <result></result>
         </action>
     </package>
 </struts>
