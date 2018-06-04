@@ -22,7 +22,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A Blog</title>
+  <title>一个博客</title>
   <!--Stylesheet-->
   <link rel="stylesheet" href="public/css/bootstrap.min.css">
   <link rel="stylesheet" href="public/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
 <div class="container-fluid header">
   <div class="row">
     <div class="col-md-2">
-      <a class="logo" href="index.jsp">A Blog</a>
+      <a class="logo" href="index.jsp">One Blog</a>
     </div>
     <div class="col-md-8">
       <div class="search">

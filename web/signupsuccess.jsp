@@ -6,12 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<%
+    String path = request.getContextPath();
+
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <html>
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>æ³¨å†ŒæˆåŠŸ</title>
+    <title>×¢²á³É¹¦</title>
     <!--Stylesheet-->
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/font-awesome.min.css">
@@ -21,7 +31,7 @@
             position: relative;
             text-align: center;
             top: 250px;
-            font-family: æ±‰ä»ªé»‘è”æä½“ç®€;
+            font-family: ººÒÇºÚÀóÖ¦Ìå¼ò;
             font-size: x-large;
         }
     </style>
@@ -44,13 +54,15 @@
 
 <!--MAIN-->
 <div class="container-fluid context">
+    <s:fielderror>
+        <s:param>success</s:param>
+    </s:fielderror>
     <div class="row mainarea">
         <p id="time"></p>
     </div>
 </div>
-
 <%
-    response.setHeader("Refresh","5;URL=signin.jsp");
+    response.setHeader("Refresh","10;URL=signin.jsp");
 %>
 
 <!--FOOTER-->
@@ -58,17 +70,17 @@
     <p class="copyright foot">
         Copyright &copy; JINGSHUI
         <br>
-        <span id="busuanzi_container_site_pv" style="font-size: 12px;">æœ¬ç«™æ€»è®¿é—®é‡: <span id="busuanzi_value_site_pv">1</span> æ¬¡</span>
+        <span id="busuanzi_container_site_pv" style="font-size: 12px;">±¾Õ¾×Ü·ÃÎÊÁ¿: <span id="busuanzi_value_site_pv">1</span> ´Î</span>
         <span> | </span>
-        <span id="busuanzi_container_site_pv" style="font-size: 12px;"> æœ¬ç«™è®¿å®¢æ•°: <span id="busuanzi_value_site_uv">1</span> äººæ¬¡</span>
+        <span id="busuanzi_container_site_pv" style="font-size: 12px;"> ±¾Õ¾·Ã¿ÍÊı: <span id="busuanzi_value_site_uv">1</span> ÈË´Î</span>
     </p>
 </div>
 <!--JavaScript-->
 <!--busuanzi tongji-->
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
-    var i = 6; function shownum(){
-        i=i-1; document.getElementById("time").innerHTML="æ³¨å†ŒæˆåŠŸï¼Œ"+i+"ç§’åè·³è½¬è‡³ç™»å½•ç•Œé¢ï¼";
+    var i = 11; function shownum(){
+        i=i-1; document.getElementById("time").innerHTML="×¢²á³É¹¦£¬ÄúµÄIDÎª£º"+"${idnumber}"+"</br>"+i+"sºó×ªÖÁµÇÂ¼½çÃæ o(£ş¨Œ£ş)£ä";
         setTimeout('shownum()',1000); }
 </script>
 </body>

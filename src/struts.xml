@@ -14,7 +14,6 @@
         <action name="signup" class="com.oneblog.action.SignupAction">
             <result name="success">signupsuccess.jsp</result>
             <result name="error">signup.jsp</result>
-            <result></result>
         </action>
     </package>
 </struts>

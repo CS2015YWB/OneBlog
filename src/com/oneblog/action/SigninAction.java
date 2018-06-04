@@ -3,6 +3,7 @@ import java.sql.*;
 import com.opensymphony.xwork2.ActionSupport;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
+import org.apache.struts2.ServletActionContext;
 
 
 public class SigninAction extends ActionSupport {
@@ -44,6 +45,8 @@ public class SigninAction extends ActionSupport {
             System.out.println("请求参数：" + idr + "\t" + pwd);
             ResultSet rs = ststment.executeQuery(sql);
             if (rs.next()) {
+                String username = rs.getString("username");
+                ServletActionContext.getRequest().setAttribute("username", username);
                 back = "success";
             }else{
                 System.out.println("输入有误,请重新输入!");
