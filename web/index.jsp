@@ -1,27 +1,21 @@
 <%--
   Created by IntelliJ IDEA.
-  User: yanwe
-  Date: 2018.6.1
-  Time: 15:59
-  To change this template use File | Settings | File Templates.
---%>
-<%--
-  Created by IntelliJ IDEA.
   User: yanwenbo
   Date: 2018.5.22
   Time: 17:00
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%
-
+  String path = request.getContextPath();
+  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/communication/512/Blog_C-128.png"/>
   <title>一个博客</title>
   <!--Stylesheet-->
   <link rel="stylesheet" href="public/css/bootstrap.min.css">
@@ -42,8 +36,19 @@
       </div>
     </div>
     <div class="col-md-2">
-      <button type="button" class="btn btn-success signup" onClick="window.location.href='signup.jsp'">注 册</button>
-      <button type="button" class="btn btn-success signin" onClick="window.location.href='signin.jsp'">登 录</button>
+      <%
+        if (session.getAttribute("USERID") != null) {
+      %>
+        <a href="#" class="btn btn-info btn-lg active signup" role="button">${sessionScope.USERNAME}</a>
+        <button type="button" class="btn btn-success signin" onclick="window.location.href='logout.action'">退 出</button>
+      <%
+        } else {
+      %>
+        <button type="button" class="btn btn-success signup" onClick="window.location.href='signup.jsp'">注 册</button>
+        <button type="button" class="btn btn-success signin" onClick="window.location.href='signin.jsp'">登 录</button>
+      <%
+        }
+      %>
     </div>
   </div>
 </div>
@@ -53,6 +58,7 @@
   <div class="row mainarea">
     <div class="col-md-8 main">
       <!--博客展示-->
+      ${messaage}
     </div>
     <div class="col-md-4 subsidiary">
 

@@ -15,5 +15,8 @@
             <result name="success">signupsuccess.jsp</result>
             <result name="error">signup.jsp</result>
         </action>
+        <action name="logout" class="com.oneblog.action.LogoutAction">
+            <result name="success">index.jsp</result>
+        </action>
     </package>
 </struts>

@@ -12,6 +12,7 @@ public class SignupAction extends ActionSupport{
     private String userName;
     private String password1;
     private String password2;
+    private String message;
     @Getter
     public String getUserName() {
         return userName;
@@ -36,9 +37,17 @@ public class SignupAction extends ActionSupport{
     public void setPassword2(String password2) {
         this.password2 = password2;
     }
+    @Getter
+    public String getMessage() {
+        return message;
+    }
+    @Setter
+    public void setMessage(String message) {
+        this.message = message;
+    }
     @Override
     public String execute() throws Exception {
-        System.out.println("注册中……");
+        System.out.println("\n-------------------------\n注册中……");
         /*-------------------------------------*/
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=true"; //URL指向访问的数据库名blog
@@ -50,6 +59,7 @@ public class SignupAction extends ActionSupport{
         String back = null;
         if (!pwd1.equals(pwd2)){
             System.out.println("两次密码输入不一致！");
+            this.setMessage("两次密码输入不一致！");
             back = "error";
         }else{
             try {
@@ -65,10 +75,11 @@ public class SignupAction extends ActionSupport{
                 ResultSet rs = pstat.getGeneratedKeys();
                 if (rs.next()) {
                     int key = rs.getInt(1);
-                    System.out.println("ID："+key);
+                    System.out.println("用户名：" + userName + "\t" + "ID："+key);
                     ServletActionContext.getRequest().setAttribute("idnumber",key);
                     back = "success";
                 }else{
+                    this.setMessage("出错啦！");
                     System.out.println("出错啦！");
                     back = "error";
                 }

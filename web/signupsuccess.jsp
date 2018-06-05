@@ -9,18 +9,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<%
-    String path = request.getContextPath();
-
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
 <html>
 <head>
-    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/communication/512/Blog_C-128.png"/>
     <title>×¢²á³É¹¦</title>
     <!--Stylesheet-->
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
