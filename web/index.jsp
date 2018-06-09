@@ -6,10 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String path = request.getContextPath();
-  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<!--%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    response.sendRedirect(basePath+"display.action");
+%-->
 <html>
 <head>
   <meta charset="UTF-8">
@@ -57,12 +59,63 @@
 <div class="container-fluid context">
   <div class="row mainarea">
     <div class="col-md-8 main">
-      <!--博客展示-->
-      ${messaage}
-    </div>
-    <div class="col-md-4 subsidiary">
+        <div class="alert alert-warning" role="alert" style="position: relative; top: 10px">
+            <p style="position: relative; font-family: sans-serif;font-size: large; font-weight: bold">全部文章</p>
+        </div>
+        <!--博客展示-->
+        <div class="row" style="position: relative">
+            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Java Web Project</h3>
+                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
+                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Java Web Project</h3>
+                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
+                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Java Web Project</h3>
+                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
+                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+        <div class="alert alert-danger" role="alert" style="position: relative">
+            <p align="center"> 已 经 到 底 啦！</p>
+        </div>
     </div>
+        <%
+            if (session.getAttribute("USERID") != null) {
+        %>
+        <div class="col-md-4 subsidiary">
+            <div style="position: relative">
+                <button type="button" class="btn btn-success myinfo" onClick="window.location.href='info.jsp'">信 息</button>
+                <button type="button" class="btn btn-warning mypost" onClick="window.location.href='myPost.jsp'">归 档</button>
+            </div>
+            <div style="position: relative">
+                <button type="button" class="btn btn-danger writeblog" onClick="window.location.href='edit.jsp'">写 作</button>
+                <button type="button" class="btn btn-primary myfavorite" onClick="window.location.href='myFavorite.jsp'">收 藏</button>
+            </div>
+            <div>
+                <img src="public/img/1.jpg" alt="OneBlog" class="img-rounded">
+            </div>
+        </div>
+        <%
+            }
+        %>
   </div>
 </div>
 

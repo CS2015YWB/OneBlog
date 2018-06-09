@@ -1,0 +1,111 @@
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*HEADER*/
+.header {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 60px;
+    background-color: #283149;
+    top: 15px;
+    bottom: 15px;
+}
+
+/*Logo*/
+.logo {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:active {
+    color: white;
+    text-decoration: none;
+}
+
+/*CONTEXT*/
+.context {
+    flex: 1 0 auto;
+    width: 100%;
+    background-color: #dbedf3;
+}
+
+.mainarea {
+    position: relative;
+    width: 94%;
+    margin:0px auto;
+    text-align:center;
+    height: 550px;
+}
+.info_id{
+    position: relative;
+    top: 20px;
+}
+.info_username{
+    position: relative;
+    top: 40px;
+}
+.info_pwd{
+    position: relative;
+    top: 60px;
+}
+.info_email{
+    position: relative;
+    top: 80px;
+}
+.info_age{
+    position: relative;
+    top: 100px;
+}
+.info_address{
+    position: relative;
+    top: 120px;
+}
+.info_submit{
+    position: relative;
+    top: 140px;
+}
+.info_message{
+    position: relative;
+    top: 160px;
+}
+
+/*FOOTER*/
+.footer{
+    flex: 0 0 auto;
+    background: rgba(10, 10, 10, 0.77);
+    width: 100%;
+    height: 60px;
+}
+.foot{
+    position: relative;
+    top: 15px;
+    color: azure;
+    text-align: center;
+}
+p span{
+    color: #FFFFFF;
+}
+
+/*Verification Code*/

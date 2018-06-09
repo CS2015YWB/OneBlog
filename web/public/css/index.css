@@ -80,23 +80,50 @@ body{
     width: 100%;
     background-color: #dbedf3;
 }
-
 .mainarea {
     position: relative;
     width: 94%;
     margin:0px auto;
 }
-
 .main {
-    height: 900px;
-    background: #FFFFFF;
+    background: rgba(175, 236, 255, 0.35);
 }
-
 .subsidiary {
-    height: 900px;
-    background: #a94442;
+    background-color: #f4f9f4;
+    height: 830px;
 }
-
+.myinfo{
+    position: relative;
+    top: 50px;
+    left: 80px;
+    font-size: medium;
+}
+.mypost{
+    position: relative;
+    top: 50px;
+    left: 140px;
+    font-size: medium;
+}
+.writeblog{
+    position: relative;
+    top: 100px;
+    left: 80px;
+    font-size: medium;
+}
+.myfavorite{
+    position: relative;
+    top: 100px;
+    left: 140px;
+    font-size: medium;
+}
+img{
+    position: relative;
+    width: 100%;
+    top: 150px;
+}
+.yuedu1, yudu2{
+    text-align: center;
+}
 /*FOOTER*/
 .footer{
     flex: 0 0 auto;

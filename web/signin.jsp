@@ -39,33 +39,25 @@
 <!--MAIN-->
 <div class="container-fluid context">
     <div class="row mainarea">
-        <h2 class="title">用户登录</h2>
-        <form action="signin.action" method="post">
-            <table>
-                <tr>
-                    <td width="100" height="40" align="right" valign="middle">账号：</td>
-                    <td width="250" align="right" valign="middle">
-                        <input type="text" name="userId" class="signin_input"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="100" height="40" align="right" valign="middle">密码：</td>
-                    <td width="250" align="right" valign="middle">
-                        <input type="password" name="password" class="signin_input"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td height="50" colspan="2" align="center" valign="middle">
-                        <input type="submit" value="登录"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="100px" height="40px" colspan="2" align="middle">
-                        <p style="color: red">${message}</p>
-                    </td>
-                </tr>
-            </table>
-        </form>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2 class="title">用户登录</h2>
+            <form action="signin.action" method="post">
+                <div class="input-group signin_id">
+                    <span class="input-group-addon" id="sizing-addon1">账号</span>
+                    <input type="text" class="form-control" name="userId" aria-describedby="sizing-addon2">
+                </div>
+                <div class="input-group signin_pwd">
+                    <span class="input-group-addon" id="sizing-addon2">密码</span>
+                    <input type="password" class="form-control" name="password" aria-describedby="sizing-addon2">
+                </div>
+                <div class="form-group signin_submit" style="text-align: center">
+                    <button type="submit" class="btn btn-default navbar-btn" style="text-align: center"> 登 录</button>
+                </div>
+                <div class="alert alert-danger signin_message" role="alert">${message}</div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 

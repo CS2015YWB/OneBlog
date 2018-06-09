@@ -38,39 +38,29 @@
     <!--MAIN-->
     <div class="container-fluid context">
         <div class="row mainarea">
-            <h2 class="title">用户注册</h2>
-            <form action="signup.action" method="post">
-                <table>
-                    <tr>
-                        <td width="100" height="40" align="right" valign="middle">用户名:</td>
-                        <td width="250" align="right" valign="middle">
-                            <input type="text" name="userName"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="100" height="40" align="right" valign="middle">密码:</td>
-                        <td width="250" align="right" valign="middle">
-                            <input type="password" name="password1"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="100" height="40" align="right" valign="middle">确认: </td>
-                        <td width="250" align="right" valign="middle">
-                            <input type="password"name="password2"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="50" colspan="2" align="center" valign="middle">
-                            <input type="submit" value="注 册"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="100px" height="40px" colspan="2" align="middle">
-                            <p style="color: red">${message}</p>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2 class="title">用户注册</h2>
+                <form action="signup.action" method="post">
+                    <div class="input-group signup_username">
+                        <span class="input-group-addon" id="sizing-addon1">用户名</span>
+                        <input type="text" class="form-control" name="userName" aria-describedby="sizing-addon2">
+                    </div>
+                    <div class="input-group signup_pwd1">
+                        <span class="input-group-addon" id="sizing-addon2">密码</span>
+                        <input type="password" class="form-control" name="password1" aria-describedby="sizing-addon2">
+                    </div>
+                    <div class="input-group signup_pwd2">
+                        <span class="input-group-addon" id="sizing-addon3">确认</span>
+                        <input type="password" class="form-control" name="password2" aria-describedby="sizing-addon2">
+                    </div>
+                    <div class="form-group signup_submit" style="text-align: center">
+                        <button type="submit" class="btn btn-default navbar-btn" style="text-align: center"> 注 册 </button>
+                    </div>
+                    <div class="alert alert-danger signup_message" role="alert">${message}</div>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 

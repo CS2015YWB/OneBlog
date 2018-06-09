@@ -57,12 +57,21 @@ body{
     margin:0px auto;
     text-align:center;
 }
-
-
-table {
+.signin_id{
     position: relative;
     top: 50px;
-    margin:0px auto;
+}
+.signin_pwd{
+    position: relative;
+    top: 80px;
+}
+.signin_submit{
+    position: relative;
+    top: 120px;
+}
+.signin_message{
+    position: relative;
+    top: 150px;
 }
 
 /*FOOTER*/

@@ -58,10 +58,25 @@ body{
     text-align:center;
 }
 
-table {
+.signup_username{
     position: relative;
     top: 50px;
-    margin:0px auto;
+}
+.signup_pwd1{
+    position: relative;
+    top: 80px;
+}
+.signup_pwd2{
+    position: relative;
+    top: 110px;
+}
+.signup_submit{
+    position: relative;
+    top: 150px;
+}
+.signup_message{
+    position: relative;
+    top: 180px;
 }
 
 /*FOOTER*/

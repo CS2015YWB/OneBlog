@@ -6,6 +6,7 @@
 
 <!--suppress ALL -->
 <struts>
+
     <package name="oneblog" namespace="/" extends="struts-default">
         <action name="signin" class="com.oneblog.action.SigninAction">
             <result name="success">signinsuccess.jsp</result>
@@ -17,6 +18,16 @@
         </action>
         <action name="logout" class="com.oneblog.action.LogoutAction">
             <result name="success">index.jsp</result>
+        </action>
+    </package>
+
+    <package name="post" namespace="/" extends="struts-default">
+        <action name="display" class="com.post.action.DisplayAction">
+            <result name="success">index.jsp</result>
+        </action>
+        <action name="edit" class="com.post.action.EditAction">
+            <result name="success">pushsuccess.jsp</result>
+            <result name="error">edit.jsp</result>
         </action>
     </package>
 </struts>
