@@ -1,23 +1,24 @@
 package com.oneblog.action;
-import java.sql.*;
-import java.util.Map;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.deploy.net.proxy.UserDefinedProxyConfig;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import org.apache.struts2.ServletActionContext;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-
-public class SigninAction extends ActionSupport {
+public class MyInfoAction extends ActionSupport{
     private String userId;
     private String password;
     private String userName;
-    private String message;
+    private String email;
+    private String address;
+    private String age;
+
     @Getter
     public String getUserId() {
         return userId;
@@ -43,48 +44,57 @@ public class SigninAction extends ActionSupport {
         this.userName = userName;
     }
     @Getter
-    public String getMessage() {
-        return message;
+    public String getEmail() {
+        return email;
     }
     @Setter
-    public void setMessage(String message) {
-        this.message = message;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    @Override
+    @Getter
+    public String getAddress() {
+        return address;
+    }
+    @Setter
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    @Getter
+    public String getAge() {
+        return age;
+    }
+    @Setter
+    public void setAge(String age) {
+        this.age = age;
+    }
     public String execute() throws Exception {
-        System.out.println("\n--------------------------\n登录中……");
+        System.out.println("\n--------------------------\n读取中……");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String idr = (String) request.getSession().getAttribute("USERID");
         /*-------------------------------------*/
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=true"; //URL指向访问的数据库名blog
         /*-------------------------------------*/
-        String idr = this.getUserId();
-        String pwd = this.getPassword();
         String back = null;
         try {
             Class.forName(driver);                                                        //加载驱动程序
             Connection conn = DriverManager.getConnection(url,"root","");  //链接数据库
             Statement ststment = conn.createStatement();                                  //用来执行sql语言
-            String sql = "Select * from user where id='"+idr+"' and password='"+pwd+"'";
+            String sql = "Select * from user where id='"+idr+"'";
             ResultSet rs = ststment.executeQuery(sql);
             if (rs.next()) {
-                userName = rs.getString("username");
-                System.out.println("用户ID：" + idr + "\t" + "用户名：" + userName);
-                ServletActionContext.getRequest().setAttribute("username", userName);
-                /*-----------------添加 Session ----------------*/
-                ActionContext.getContext().getSession().put("USERID",userId);
-                ActionContext.getContext().getSession().put("USERNAME",userName);
-                /*-----------------添加 Cookies ----------------*/
-                Cookie userid = new Cookie("USERID", userId);   //setcookie(name,value,expire,path,domain,secure) 各个参数的意义
-                Cookie userpassword = new Cookie("USERPASSWORD", password);
-                userid.setMaxAge(24*60*60);                     //一天
-                userpassword.setMaxAge(24*60*60);
-                ServletActionContext.getResponse().addCookie(userid);
-                ServletActionContext.getResponse().addCookie(userpassword);
+                this.userId = idr;
+                this.password = rs.getString("password");
+                this.userName = rs.getString("username");
+                this.email = rs.getString("email");
+                this.address = rs.getString("address");
+                this.age = rs.getString("age");
+                System.out.println(">>>个人信息：\n账号：" + idr + "\n密码：" + this.password +
+                "\n用户名：" + this.userName + "\n邮箱：" + this.email + "\n地址：" + this.address + "\n年龄：" + this.age);
                 back = "success";
             }else{
-                this.setMessage("账号或密码输入有误,请重新输入!");
-                System.out.println("账号或密码输入有误,请重新输入!");
-                back = "input";
+                System.out.println("读取失败！请检查网络及配置……");
+                back = "fail";
             }
             rs.close();
             conn.close();

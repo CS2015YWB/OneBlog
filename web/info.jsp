@@ -45,27 +45,27 @@
             <form action="modifyInfo.action" method="post">
                 <div class="input-group info_id">
                     <span class="input-group-addon" id="sizing-addon1">账号</span>
-                    <input type="text" class="form-control" name="userId" aria-describedby="sizing-addon2">
+                    <input type="text" class="form-control" name="userId" aria-describedby="sizing-addon2" disabled="disabled" value=${userId}>
                 </div>
                 <div class="input-group info_username">
                     <span class="input-group-addon" id="sizing-addon2">用户名</span>
-                    <input type="password" class="form-control" name="userName" aria-describedby="sizing-addon2">
+                    <input type="text" class="form-control" name="userName" aria-describedby="sizing-addon2" value=${userName}>
                 </div>
                 <div class="input-group info_pwd">
                     <span class="input-group-addon" id="sizing-addon3">密码</span>
-                    <input type="password" class="form-control" name="password" aria-describedby="sizing-addon2">
+                    <input type="password" class="form-control" name="password" aria-describedby="sizing-addon2" value=${password}>
                 </div>
                 <div class="input-group info_email">
                     <span class="input-group-addon" id="sizing-addon4">邮箱</span>
-                    <input type="text" class="form-control" name="email" aria-describedby="sizing-addon2">
+                    <input type="text" class="form-control" name="email" aria-describedby="sizing-addon2" value=${email}>
                 </div>
                 <div class="input-group info_age">
                     <span class="input-group-addon" id="sizing-addon5">年龄</span>
-                    <input type="text" class="form-control" name="age" aria-describedby="sizing-addon2">
+                    <input type="text" class="form-control" name="age" aria-describedby="sizing-addon2" value=${age}>
                 </div>
                 <div class="input-group info_address">
                     <span class="input-group-addon" id="sizing-addon6">地址</span>
-                    <input type="text" class="form-control" name="address" aria-describedby="sizing-addon2">
+                    <input type="text" class="form-control" name="address" aria-describedby="sizing-addon2" value=${address}>
                 </div>
                 <div class="form-group info_submit" style="text-align: center">
                     <button type="submit" class="btn btn-default navbar-btn" style="text-align: center"> 确 认 修 改 </button>

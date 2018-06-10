@@ -6,7 +6,7 @@
 
 <!--suppress ALL -->
 <struts>
-
+    <!--oneblog(登录、注册、信息)-->
     <package name="oneblog" namespace="/" extends="struts-default">
         <action name="signin" class="com.oneblog.action.SigninAction">
             <result name="success">signinsuccess.jsp</result>
@@ -19,14 +19,22 @@
         <action name="logout" class="com.oneblog.action.LogoutAction">
             <result name="success">index.jsp</result>
         </action>
+        <action name="myInfo" class="com.oneblog.action.MyInfoAction">
+            <result name="success">info.jsp</result>
+            <result name="fail">index.jsp</result>
+        </action>
+        <action name="modifyInfo" class="com.oneblog.action.ModifyInfoAction">
+            <result name="success">info.jsp</result>
+            <result name="fail">info.jsp</result>
+        </action>
     </package>
-
+    <!--post(写作、归档、收藏、搜索、查看)-->
     <package name="post" namespace="/" extends="struts-default">
         <action name="display" class="com.post.action.DisplayAction">
             <result name="success">index.jsp</result>
         </action>
         <action name="edit" class="com.post.action.EditAction">
-            <result name="success">pushsuccess.jsp</result>
+            <result name="success">myPost.jsp</result>
             <result name="error">edit.jsp</result>
         </action>
     </package>

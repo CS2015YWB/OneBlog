@@ -102,7 +102,7 @@
         %>
         <div class="col-md-4 subsidiary">
             <div style="position: relative">
-                <button type="button" class="btn btn-success myinfo" onClick="window.location.href='info.jsp'">信 息</button>
+                <button type="button" class="btn btn-success myinfo" onClick="window.location.href='myInfo.action'">信 息</button>
                 <button type="button" class="btn btn-warning mypost" onClick="window.location.href='myPost.jsp'">归 档</button>
             </div>
             <div style="position: relative">
