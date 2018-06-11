@@ -25,7 +25,7 @@
 <div class="container-fluid header">
     <div class="row">
         <div class="col-md-2">
-            <a class="logo" href="index.jsp">One Blog</a>
+            <a class="logo" href="display.action">One Blog</a>
         </div>
         <div class="col-md-8">
 
@@ -43,7 +43,7 @@
         <form action="edit.action" method="post">
             <div class="input-group" style="width: 90%; margin: 20px auto">
                 <span class="input-group-addon" id="basic-addon1">标 题</span>
-                <input type="text" class="form-control" placeholder="标题字数不得超过20个字" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="标题字数不得超过20个字" aria-describedby="basic-addon1" name="title">
             </div>
             <div class="form-group" style="position:relative; z-index: 9999">
                 <!-- editormd start -->

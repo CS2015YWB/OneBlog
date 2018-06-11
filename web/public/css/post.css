@@ -66,6 +66,7 @@ body{
 }
 .postcontext{
     padding: 30px 30px 30px 10px;
+    text-align: left;
 }
 /*FOOTER*/
 .footer{

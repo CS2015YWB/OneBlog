@@ -17,11 +17,11 @@
             <result name="error">signup.jsp</result>
         </action>
         <action name="logout" class="com.oneblog.action.LogoutAction">
-            <result name="success">index.jsp</result>
+            <result name="success">display.action</result>
         </action>
         <action name="myInfo" class="com.oneblog.action.MyInfoAction">
             <result name="success">info.jsp</result>
-            <result name="fail">index.jsp</result>
+            <result name="fail">display.action</result>
         </action>
         <action name="modifyInfo" class="com.oneblog.action.ModifyInfoAction">
             <result name="success">info.jsp</result>
@@ -36,6 +36,12 @@
         <action name="edit" class="com.post.action.EditAction">
             <result name="success">myPost.jsp</result>
             <result name="error">edit.jsp</result>
+        </action>
+        <action name="fullText" class="com.post.action.FullTextAction">
+            <result name="success">post.jsp</result>
+        </action>
+        <action name="myPost" class="com.post.action.MyPostAction">
+            <result name="success">myPost.jsp</result>
         </action>
     </package>
 </struts>

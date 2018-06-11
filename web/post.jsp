@@ -23,10 +23,11 @@ To change this template use File | Settings | File Templates.
 </head>
 <body>
 <!--HEADER-->
+
 <div class="container-fluid header">
     <div class="row">
         <div class="col-md-2">
-            <a class="logo" href="index.jsp">One Blog</a>
+            <a class="logo" href="display.action">One Blog</a>
         </div>
         <div class="col-md-8">
 
@@ -42,26 +43,18 @@ To change this template use File | Settings | File Templates.
     <div class="row mainarea">
         <div class="col-md-2"></div>
         <div class="col-md-8 postmain">
-            <h2>论社会主义核心价值观</h2>
+            <h2>${title}</h2>
             <div class="postinfo">
                 <span>作者：${author}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>日期：${publishTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>阅读量：${count}</span>
             </div>
             <div class="postcontext">
-                <p>
-                    关于你
-
-　　 关于你，我有太多东西关于你。
-
-　　 清醒的时候放不下矜持，不敢说我喜欢你，只有在某个夜晚多愁善感又萦绕在心头，或是朋友聚会上的大醉，才敢借着情绪说，我喜欢你，喜欢了好久好久。
-
-　　关于你
-                </p>
+                ${bowen}
             </div>
             <div class="praise myfavorite">
                 <span id="praise"><img src="public/img/zan.png" id="praise-img" /></span>
-                <span id="praise-txt">0</span>
+                <span id="praise-txt">${zan}</span>
                 <span id="add-num"><em>+1</em></span>
             </div>
         </div>
@@ -108,6 +101,27 @@ To change this template use File | Settings | File Templates.
             }
         });
     })
+</script>
+<script type="text/javascript">
+    function praise(recordNo, praiseCount) {
+        $.ajax({
+            url: 'myFavorite.action',
+            type: 'POST',
+            data: {
+                'recordNo': recordNo
+            },
+            dataType: "JSON",
+            success: function(d) {
+                if (d.success) {
+                    var strategyPraiseNo = parseInt(praiseCount) + 1;
+                    $('#praiseNo' + recordNo).html(strategyPraiseNo)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("无法连接服务器:" + textStatus);
+            }
+        });
+    }
 </script>
 </body>
 </html>

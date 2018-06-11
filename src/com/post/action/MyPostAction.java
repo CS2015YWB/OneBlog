@@ -4,22 +4,25 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.util.*;
 
-public class DisplayAction extends ActionSupport{
-    private StringBuffer displayBlock;
+public class MyPostAction extends ActionSupport{
+    private StringBuffer myDisplayBlock;
     @Getter
-    public StringBuffer getDisplayBlock() {
-        return displayBlock;
+    public StringBuffer getMyDisplayBlock() {
+        return myDisplayBlock;
     }
     @Setter
-    public void setDisplayBlock(StringBuffer displayBlock) {
-        this.displayBlock = displayBlock;
+    public void setMyDisplayBlock(StringBuffer myDisplayBlock) {
+        this.myDisplayBlock = myDisplayBlock;
     }
     @Override
     public String execute() throws Exception {
-        System.out.println("\n-------------------------\n首页加载中……");
+        System.out.println("\n-------------------------\n我的文档集加载中……");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String idr = (String) request.getSession().getAttribute("USERID");
         /*-------------------------------------*/
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=true"; //URL指向访问的数据库名blog
@@ -31,7 +34,7 @@ public class DisplayAction extends ActionSupport{
             Connection conn = DriverManager.getConnection(url,"root","");  //链接数据库
             System.out.println("数据库连接成功……");
             Statement ststment = conn.createStatement();                                  //用来执行sql语言
-            String sql="SELECT * FROM post";
+            String sql="Select * from post where uid='"+idr+"'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             rs.last();                            //移至最后一条记录
@@ -59,18 +62,19 @@ public class DisplayAction extends ActionSupport{
                 list++;
             }
             for (int i=0; i<list; i++){
-                block.append("             <div class='col-md-10' style='margin: 20px 60px 10px 60px'>\n");
+                block.append("             <div class='col-md-3' style='margin: 20px 50px 10px 50px'>\n");
                 block.append("                 <div class='thumbnail'>\n");
                 block.append("                      <div class='caption'>\n");
                 block.append("                          <h3>" + title[i] + "</h3>\n");
                 block.append("                          <p>作者：" + uid[i] + "\t时间："+ publishtime[i] + "\t阅读量：" + count[i] + "</p>\n");
-                block.append("                          <p class='yuedu1'><a href='fullText.action?postId=" + id[i] + "' class='btn btn-primary yuedu2' name='postId' role='button' value=" + id[i] +">阅读全文</a></p>\n");
+                block.append("                          <p class='yuedu1'><a href='fullText.action?postId=" + id[i] + "' class='btn btn-primary yuedu2' role='button'>阅读全文</a></p>\n");
                 block.append("                      </div>\n");
                 block.append("                 </div>\n");
                 block.append("             </div>");
             }
-            this.displayBlock = block;
-            System.out.println("this.displayBlock\n" + this.displayBlock);
+            this.myDisplayBlock = block;
+            System.out.println("this.displayBlock\n" + this.myDisplayBlock);
+            ServletActionContext.getRequest().setAttribute("bowenblock", block);
             back = "success";
             rs.close();
             conn.close();

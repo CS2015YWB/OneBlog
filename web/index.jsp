@@ -7,11 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<!--%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-    response.sendRedirect(basePath+"display.action");
-%-->
 <html>
 <head>
   <meta charset="UTF-8">
@@ -25,11 +20,12 @@
   <link rel="stylesheet" href="public/css/index.css">
 </head>
 <body>
+
 <!--HEADER-->
 <div class="container-fluid header">
   <div class="row">
     <div class="col-md-2">
-      <a class="logo" href="index.jsp">One Blog</a>
+      <a class="logo" href="display.action">One Blog</a>
     </div>
     <div class="col-md-8">
       <div class="search">
@@ -64,34 +60,16 @@
         </div>
         <!--博客展示-->
         <div class="row" style="position: relative">
-            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-
+            ${displayBlock}
+            <!--div class="col-md-10" style="margin: 20px 60px 10px 60px">
+                 <div class="thumbnail">
+                      <div class="caption">
+                          <h3>Java Web Project</h3>
+                          <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
+                          <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
+                      </div>
+                 </div>
+             </div-->
         </div>
         <div class="alert alert-danger" role="alert" style="position: relative">
             <p align="center"> 已 经 到 底 啦！</p>
@@ -103,7 +81,7 @@
         <div class="col-md-4 subsidiary">
             <div style="position: relative">
                 <button type="button" class="btn btn-success myinfo" onClick="window.location.href='myInfo.action'">信 息</button>
-                <button type="button" class="btn btn-warning mypost" onClick="window.location.href='myPost.jsp'">归 档</button>
+                <button type="button" class="btn btn-warning mypost" onClick="window.location.href='myPost.action'">归 档</button>
             </div>
             <div style="position: relative">
                 <button type="button" class="btn btn-danger writeblog" onClick="window.location.href='edit.jsp'">写 作</button>

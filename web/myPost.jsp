@@ -25,7 +25,7 @@
 <div class="container-fluid header">
     <div class="row">
         <div class="col-md-2">
-            <a class="logo" href="index.jsp">One Blog</a>
+            <a class="logo" href="display.action">One Blog</a>
         </div>
         <div class="col-md-8">
 
@@ -44,7 +44,8 @@
         </div>
         <!--博客展示-->
         <div class="row" style="position: relative">
-            <div class="col-md-3" style="margin: 20px 50px 10px 50px">
+            ${myDisplayBlock}
+            <!--div class="col-md-3" style="margin: 20px 50px 10px 50px">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>Java Web Project</h3>
@@ -52,52 +53,7 @@
                         <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3" style="margin: 20px 50px 10px 50px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3" style="margin: 20px 50px 10px 50px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3" style="margin: 20px 50px 10px 50px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3" style="margin: 20px 50px 10px 50px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3" style="margin: 20px 50px 10px 50px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
+            </div-->
         </div>
         <div class="alert alert-danger" role="alert" style="position: relative">
             <p align="center"> 已 经 到 底 啦！</p>

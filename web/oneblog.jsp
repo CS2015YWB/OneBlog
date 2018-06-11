@@ -1,11 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: yanwe
-  Date: 2018.5.29
-  Time: 17:34
+  Date: 2018.6.11
+  Time: 22:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+response.sendRedirect(basePath+"display.action");
+%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -27,7 +32,7 @@
         }
     </style>
 </head>
-<body onload="shownum()">
+<body>
 <!--HEADER-->
 <div class="container-fluid header">
     <div class="row">
@@ -46,7 +51,8 @@
 <!--MAIN-->
 <div class="container-fluid context">
     <div class="row mainarea">
-        <p>500</p>
+        <h1>One Blog</h1>
+        <h4>即将登录网站……</h4>
     </div>
 </div>
 

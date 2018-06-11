@@ -24,7 +24,7 @@
     <div class="container-fluid header">
         <div class="row">
             <div class="col-md-2">
-                <a class="logo" href="index.jsp">One Blog</a>
+                <a class="logo" href="display.action">One Blog</a>
             </div>
             <div class="col-md-8">
 
