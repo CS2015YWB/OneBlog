@@ -68,7 +68,7 @@
                     <input type="text" class="form-control" name="address" aria-describedby="sizing-addon2" value=${address}>
                 </div>
                 <div class="form-group info_submit" style="text-align: center">
-                    <button type="submit" class="btn btn-default navbar-btn" style="text-align: center"> 确 认 修 改 </button>
+                    <button type="submit" class="btn btn-success navbar-btn" style="text-align: center"> 确 认 修 改 </button>
                 </div>
                 <div class="alert alert-danger info_message" role="alert">${message}</div>
             </form>

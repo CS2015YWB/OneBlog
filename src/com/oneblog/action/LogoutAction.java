@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutAction extends ActionSupport{
     @Override
     public String execute() throws Exception {
-        String back=null;
+        String back= null;
         //清空session
         ActionContext.getContext().getSession().clear();
         //使HttpSession失效

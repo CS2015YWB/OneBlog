@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: yanwe
-  Date: 2018.6.6
-  Time: 17:48
+  Date: 2018.6.12
+  Time: 23:00
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/communication/512/Blog_C-128.png"/>
-    <title>写文章</title>
+    <title>修改文章</title>
     <!--Stylesheet-->
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/font-awesome.min.css">
@@ -40,15 +40,15 @@
 <div class="container-fluid context">
     <div class="row mainarea">
         <!--写文章-->
-        <form action="edit.action" method="post">
+        <form action="saveChange.action?saveId=${mid}" method="post">
             <div class="input-group" style="width: 90%; margin: 20px auto">
                 <span class="input-group-addon" id="basic-addon1">标 题</span>
-                <input type="text" class="form-control" placeholder="标题字数不得超过20个字" aria-describedby="basic-addon1" name="title">
+                <input type="text" class="form-control" placeholder="标题字数不得超过20个字" aria-describedby="basic-addon1" name="title" value=${title}>
             </div>
             <div class="form-group" style="position:relative; z-index: 9999">
                 <!-- editormd start -->
                 <div class="editormd" id="test-editormd">
-                    <textarea class="editormd-markdown-textarea" name="testeditormdmarkdowndoc" id="editormd"></textarea>
+                    <textarea class="editormd-markdown-textarea" name="testeditormdmarkdowndoc" id="editormd">${md}</textarea>
                     <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
                     <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
                     <textarea class="editormd-html-textarea" name="editorhtml" id="editorhtml"></textarea>
@@ -56,7 +56,7 @@
                 <!-- editormd end -->
             </div>
             <div class="form-group" style="text-align: center">
-                <button type="submit" class="btn btn-success navbar-btn" style="text-align: center"> 发 表 </button>
+                <button type="submit" class="btn btn-success navbar-btn" style="text-align: center">完 成 修 改</button>
             </div>
         </form>
     </div>
@@ -110,3 +110,4 @@
 <!-- editormd end -->
 </body>
 </html>
+

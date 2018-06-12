@@ -124,6 +124,9 @@ img{
 .yuedu1, yudu2{
     text-align: center;
 }
+.yuedu3{
+    margin: 0 70px 0 70px;
+}
 /*FOOTER*/
 .footer{
     flex: 0 0 auto;

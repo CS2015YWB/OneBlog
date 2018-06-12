@@ -45,12 +45,12 @@
         <!--博客展示-->
         <div class="row" style="position: relative">
             ${myDisplayBlock}
-            <!--div class="col-md-3" style="margin: 20px 50px 10px 50px">
+            <!--div class="col-md-5" style="margin: 20px 50px 10px 50px">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>Java Web Project</h3>
                         <p>时间：2018-06-09 阅读量：24</p>
-                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu2" role="button">阅读全文</a></p>
+                        <p class="yuedu1"><a href="#" class="btn btn-primary yuedu3" role="button">阅读</a><a href="#" class="btn btn-success yuedu2" role="button">修改</a><a href="#" class="btn btn-danger yuedu3" role="button"> 删除 </a></p>
                     </div>
                 </div>
             </div-->

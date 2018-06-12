@@ -1,4 +1,5 @@
 package com.post.action;
+
 import com.opensymphony.xwork2.ActionSupport;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
@@ -7,10 +8,19 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 
-public class EditAction extends ActionSupport{
+public class SaveChangeAction extends ActionSupport {
+    private String saveId;
     private String title;
     private String editorhtml;
     private String testeditormdmarkdowndoc;
+    @Getter
+    public String getSaveId() {
+        return saveId;
+    }
+    @Setter
+    public void setSaveId(String saveId) {
+        this.saveId = saveId;
+    }
     @Getter
     public String getTitle() {
         return title;
@@ -42,31 +52,24 @@ public class EditAction extends ActionSupport{
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=true"; //URL指向访问的数据库名blog
         /*-------------------------------------*/
+        String pid = this.getSaveId();
         String ttl = this.getTitle();
-        String md = this.getTesteditormdmarkdowndoc();
+        String mdtext = this.getTesteditormdmarkdowndoc();
         String edithtml = this.getEditorhtml();
-        HttpServletRequest request = ServletActionContext.getRequest();
-        String idr = (String) request.getSession().getAttribute("USERID");
         String back = null;
         try {
             Class.forName(driver);                                                        //加载驱动程序
             Connection conn = DriverManager.getConnection(url,"root","");  //链接数据库
-            System.out.println("数据库连接成功……");
-            String sql="INSERT INTO post" + "(title,md,content,uid)VALUES(?,?,?,?)";
-            PreparedStatement pstat = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            Statement ststment = conn.createStatement();                                  //用来执行sql语言
+            String sql="UPDATE post SET title=?, md=?, content=?" + " where id="+pid;
+            PreparedStatement pstat = conn.prepareStatement(sql);
             pstat.setString(1, ttl);
-            pstat.setString(2, md);
+            pstat.setString(2, mdtext);
             pstat.setString(3, edithtml);
-            pstat.setString(4, idr);
             pstat.executeUpdate();
-            ResultSet rs = pstat.getGeneratedKeys();
-            if (rs.next()) {
-                back = "success";
-            }else{
-                System.out.println("出错啦！");
-                back = "error";
-            }
-            rs.close();
+            System.out.println("修改成功！");
+            back = "success";
+            pstat.close();
             conn.close();
         }catch(ClassNotFoundException e){
             System.out.println("No Drive!");
