@@ -29,7 +29,8 @@
     </div>
     <div class="col-md-8">
       <div class="search">
-        <form> <input type="text" placeholder=" 输入关键词搜索……">
+        <form action="search.action" method="post">
+            <input type="text" name="searchText" placeholder=" 输入关键词搜索……">
         </form>
       </div>
     </div>

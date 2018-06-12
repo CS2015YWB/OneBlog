@@ -1,4 +1,6 @@
 package com.post.action;
 
-public class MyFavoriteAction {
+import com.opensymphony.xwork2.ActionSupport;
+
+public class MyFavoriteAction extends ActionSupport {
 }

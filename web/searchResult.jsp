@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 
 <html>
 <head>
@@ -40,7 +41,8 @@
 <div class="container-fluid context">
     <div class="row mainarea">
         <div class="row" style="position: relative">
-            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
+            ${searchDisplayBlock}
+            <!--div class="col-md-10" style="margin: 20px 60px 10px 60px">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>Java Web Project</h3>
@@ -48,25 +50,7 @@
                         <p><a href="#" class="btn btn-primary" role="button">阅读全文</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
-                        <p><a href="#" class="btn btn-primary" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10" style="margin: 20px 60px 10px 60px">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Java Web Project</h3>
-                        <p>作者：cslion 时间：2018-06-09 阅读量：24</p>
-                        <p><a href="#" class="btn btn-primary" role="button">阅读全文</a></p>
-                    </div>
-                </div>
-            </div>
+            </div-->
         </div>
     </div>
 </div>

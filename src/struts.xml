@@ -43,5 +43,9 @@
         <action name="myPost" class="com.post.action.MyPostAction">
             <result name="success">myPost.jsp</result>
         </action>
+        <action name="search" class="com.post.action.SearchAction">
+            <result name="success">searchResult.jsp</result>
+            <result name="fail">searchResult.jsp</result>
+        </action>
     </package>
 </struts>
