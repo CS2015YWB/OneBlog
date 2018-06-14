@@ -41,11 +41,11 @@ To change this template use File | Settings | File Templates.
 <!--MAIN-->
 <div class="container-fluid context">
     <div class="row mainarea">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 postmain">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 postmain">
             <h2>${title}</h2>
             <div class="postinfo">
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-warning" role="alert">
                     <span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 作者：${author}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 发表于：${publishTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 热度：${count}℃</span>
@@ -60,7 +60,7 @@ To change this template use File | Settings | File Templates.
                 ${Comment}
             </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
     </div>
 </div>
 

@@ -44,15 +44,15 @@
                 <form action="signup.action" method="post">
                     <div class="input-group signup_username">
                         <span class="input-group-addon" id="sizing-addon1">用户名</span>
-                        <input type="text" class="form-control" name="userName" aria-describedby="sizing-addon2">
+                        <input type="text" class="form-control" name="userName" aria-describedby="sizing-addon2" placeholder="请输入3-10个字符以内的用户名">
                     </div>
                     <div class="input-group signup_pwd1">
                         <span class="input-group-addon" id="sizing-addon2">密码</span>
-                        <input type="password" class="form-control" name="password1" aria-describedby="sizing-addon2">
+                        <input type="password" class="form-control" name="password1" aria-describedby="sizing-addon2" placeholder="密码位数限定为3-16个字符">
                     </div>
                     <div class="input-group signup_pwd2">
                         <span class="input-group-addon" id="sizing-addon3">确认</span>
-                        <input type="password" class="form-control" name="password2" aria-describedby="sizing-addon2">
+                        <input type="password" class="form-control" name="password2" aria-describedby="sizing-addon2" placeholder="请再输入一遍密码！">
                     </div>
                     <div class="form-group signup_submit" style="text-align: center">
                         <button type="submit" class="btn btn-default navbar-btn" style="text-align: center"> 注 册 </button>

@@ -35,15 +35,17 @@
         </div>
     </div>
 </div>
-
 <!--MAIN-->
 <div class="container-fluid context">
     <div class="row mainarea">
         <!--写文章-->
         <form action="edit.action" method="post">
+            <div class="alert alert-danger" role="alert" style="position: relative; width: 90%; margin: 10 auto">
+                <p align="center"> ${message} </p>
+            </div>
             <div class="input-group" style="width: 90%; margin: 20px auto">
                 <span class="input-group-addon" id="basic-addon1">标 题</span>
-                <input type="text" class="form-control" placeholder="标题字数不得超过20个字" aria-describedby="basic-addon1" name="title">
+                <input type="text" class="form-control" placeholder="文章标题不得超过20个字符" aria-describedby="basic-addon1" name="title">
             </div>
             <div class="form-group" style="position:relative; z-index: 9999">
                 <!-- editormd start -->

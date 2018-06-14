@@ -11,6 +11,7 @@ public class EditAction extends ActionSupport{
     private String title;
     private String editorhtml;
     private String testeditormdmarkdowndoc;
+    private String message;
     @Getter
     public String getTitle() {
         return title;
@@ -35,6 +36,14 @@ public class EditAction extends ActionSupport{
     public void setTesteditormdmarkdowndoc(String testeditormdmarkdowndoc) {
         this.testeditormdmarkdowndoc = testeditormdmarkdowndoc;
     }
+    @Getter
+    public String getMessage() {
+        return message;
+    }
+    @Setter
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public String execute() throws Exception {
         System.out.println("\n-------------------------\n博文保存中……");
@@ -48,31 +57,40 @@ public class EditAction extends ActionSupport{
         HttpServletRequest request = ServletActionContext.getRequest();
         String idr = (String) request.getSession().getAttribute("USERID");
         String back = null;
-        try {
-            Class.forName(driver);                                                        //加载驱动程序
-            Connection conn = DriverManager.getConnection(url,"root","");  //链接数据库
-            System.out.println("数据库连接成功……");
-            String sql="INSERT INTO post" + "(title,md,content,uid)VALUES(?,?,?,?)";
-            PreparedStatement pstat = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pstat.setString(1, ttl);
-            pstat.setString(2, md);
-            pstat.setString(3, edithtml);
-            pstat.setString(4, idr);
-            pstat.executeUpdate();
-            ResultSet rs = pstat.getGeneratedKeys();
-            if (rs.next()) {
-                back = "success";
-            }else{
-                System.out.println("出错啦！");
-                back = "error";
+        if (ttl.length() > 20){
+            this.message = "标题字数限定在20个字符以内！";
+            back="error";
+        }else if (ttl.length() == 0) {
+            this.message = "文章标题不能为空！";
+            back="error";
+        }else{
+            try {
+                Class.forName(driver);                                                        //加载驱动程序
+                Connection conn = DriverManager.getConnection(url,"root","");  //链接数据库
+                System.out.println("数据库连接成功……");
+                String sql="INSERT INTO post" + "(title,md,content,uid)VALUES(?,?,?,?)";
+                PreparedStatement pstat = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                pstat.setString(1, ttl);
+                pstat.setString(2, md);
+                pstat.setString(3, edithtml);
+                pstat.setString(4, idr);
+                pstat.executeUpdate();
+                ResultSet rs = pstat.getGeneratedKeys();
+                if (rs.next()) {
+                    this.message = "文章发布成功！";
+                    back = "success";
+                }else{
+                    System.out.println("出错啦！");
+                    back = "error";
+                }
+                rs.close();
+                conn.close();
+            }catch(ClassNotFoundException e){
+                System.out.println("No Drive!");
+                e.printStackTrace();
+            } catch(Exception e){
+                e.printStackTrace();
             }
-            rs.close();
-            conn.close();
-        }catch(ClassNotFoundException e){
-            System.out.println("No Drive!");
-            e.printStackTrace();
-        } catch(Exception e){
-            e.printStackTrace();
         }
         return back;
     }

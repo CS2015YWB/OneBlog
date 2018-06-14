@@ -57,15 +57,15 @@ body{
     text-align:center;
 }
 .postmain{
-    padding: 10px;
+    padding-left: 10px;
     background: url("../img/2.jpg") repeat center 0px;
     min-height: 81vh;
 }
 .postinfo{
-    padding: 20px 0px 10px 0px;
+    margin: 30px 30px 30px 30px;
 }
 .postcontext{
-    padding: 30px 30px 30px 10px;
+    margin: 40px 30px 30px 30px;
     text-align: left;
 }
 /*FOOTER*/
