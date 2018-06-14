@@ -73,7 +73,14 @@ body{
 .signup {
     right: 20px;
 }
-
+.usname{
+    position: relative;
+    top: 10px;
+    background-color: #2C7EEA;
+    height: 40px;
+    font-size: medium;
+    left: 20px;
+}
 /*CONTEXT*/
 .context {
     flex: 1 0 auto;

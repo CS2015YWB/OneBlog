@@ -31,7 +31,7 @@ public class DisplayAction extends ActionSupport{
             Connection conn = DriverManager.getConnection(url,"root","");  //链接数据库
             System.out.println("数据库连接成功……");
             Statement ststment = conn.createStatement();                                  //用来执行sql语言
-            String sql="SELECT * FROM post";
+            String sql="SELECT * from post";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             rs.last();                            //移至最后一条记录
@@ -47,6 +47,7 @@ public class DisplayAction extends ActionSupport{
             String[] uid = new String[rowCount];
             String[] count = new String[rowCount];
             String[] zan = new String[rowCount];
+            String[] usrname = new String[rowCount];
             int list = 0;
             while(rs.next()){
                 id[list] = rs.getString("id");
@@ -58,12 +59,23 @@ public class DisplayAction extends ActionSupport{
                 zan[list] = rs.getString("zan");
                 list++;
             }
+            String sql2 = null;
+            for (int j=0; j<list; j++){
+                pstmt.close();
+                rs.close();
+                sql2="SELECT * FROM user WHERE user.id IN (SELECT uid FROM post WHERE post.id = " + id[j] +")";  //嵌套查询
+                pstmt = conn.prepareStatement(sql2);
+                rs = pstmt.executeQuery();
+                while (rs.next()){
+                    usrname[j] = rs.getString("username");
+                }
+            }
             for (int i=0; i<list; i++){
                 block.append("             <div class='col-md-10' style='margin: 20px 60px 10px 60px'>\n");
                 block.append("                 <div class='thumbnail'>\n");
                 block.append("                      <div class='caption'>\n");
                 block.append("                          <h3>" + title[i] + "</h3>\n");
-                block.append("                          <p>作者：" + uid[i] + "\t时间："+ publishtime[i] + "\t阅读量：" + count[i] + "</p>\n");
+                block.append("                          <p>作者：" + usrname[i] + "\t时间："+ publishtime[i] + "\t阅读量：" + count[i] + "</p>\n");
                 block.append("                          <p class='yuedu1'><a href='fullText.action?postId=" + id[i] + "' class='btn btn-primary yuedu2' name='postId' role='button' value=" + id[i] +">阅读全文</a></p>\n");
                 block.append("                      </div>\n");
                 block.append("                 </div>\n");
@@ -72,6 +84,7 @@ public class DisplayAction extends ActionSupport{
             this.displayBlock = block;
             System.out.println("this.displayBlock\n" + this.displayBlock);
             back = "success";
+            pstmt.close();
             rs.close();
             conn.close();
         } catch(ClassNotFoundException e){

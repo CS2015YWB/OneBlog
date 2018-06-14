@@ -50,6 +50,7 @@ public class MyPostAction extends ActionSupport{
             String[] uid = new String[rowCount];
             String[] count = new String[rowCount];
             String[] zan = new String[rowCount];
+            String[] usrname = new String[rowCount];
             int list = 0;
             while(rs.next()){
                 id[list] = rs.getString("id");
@@ -61,12 +62,23 @@ public class MyPostAction extends ActionSupport{
                 zan[list] = rs.getString("zan");
                 list++;
             }
+            String sql2 = null;
+            for (int j=0; j<list; j++){
+                pstmt.close();
+                rs.close();
+                sql2="SELECT * FROM user WHERE user.id IN (SELECT uid FROM post WHERE post.id = " + id[j] +")";  //嵌套查询
+                pstmt = conn.prepareStatement(sql2);
+                rs = pstmt.executeQuery();
+                while (rs.next()){
+                    usrname[j] = rs.getString("username");
+                }
+            }
             for (int i=0; i<list; i++){
                 block.append("             <div class='col-md-5' style='margin: 20px 50px 10px 50px'>\n");
                 block.append("                 <div class='thumbnail'>\n");
                 block.append("                      <div class='caption'>\n");
                 block.append("                          <h3>" + title[i] + "</h3>\n");
-                block.append("                          <p>作者：" + uid[i] + "\t时间："+ publishtime[i] + "\t阅读量：" + count[i] + "</p>\n");
+                block.append("                          <p>作者：" + usrname[i] + "\t时间："+ publishtime[i] + "\t阅读量：" + count[i] + "</p>\n");
                 block.append("                          <p class='yuedu1'><a href='fullText.action?postId=" + id[i] + "' class='btn btn-primary yuedu3' role='button'>阅读</a> <a href='modify.action?modifyId=" + id[i] + "' class='btn btn-success yuedu2' role='button'>修改</a> <a href='delete.action?deleteId=" + id[i] + "' class='btn btn-danger yuedu3' role='button'>删 除</a></p>\n");
                 block.append("                      </div>\n");
                 block.append("                 </div>\n");

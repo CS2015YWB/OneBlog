@@ -61,6 +61,18 @@ public class SignupAction extends ActionSupport{
             System.out.println("两次密码输入不一致！");
             this.setMessage("两次密码输入不一致！");
             back = "error";
+        }else if (pwd1.equals(pwd2) && (pwd1.length() >16 || pwd1.length() <3)) {
+            System.out.println("密码太长或太短，请重新输入！");
+            this.setMessage("密码太长或太短，请重新输入！");
+            back = "error";
+        }else if (uname.length() > 10) {
+            System.out.println("用户名字符位数超限！");
+            this.setMessage("用户名字符位数超限！");
+            back = "error";
+        }else if (uname.length() < 3) {
+            System.out.println("用户名字符位数不足！");
+            this.setMessage("用户名字符位数不足！");
+            back = "error";
         }else{
             try {
                 System.out.println("恭喜！密码输入正确！");

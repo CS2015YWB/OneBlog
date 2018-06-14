@@ -38,8 +38,7 @@
       <%
         if (session.getAttribute("USERID") != null) {
       %>
-        <a href="#" class="btn btn-info btn-lg active signup" role="button">${sessionScope.USERNAME}</a>
-        <button type="button" class="btn btn-success signin" onclick="window.location.href='logout.action'">退 出</button>
+        <a href="#" class="btn btn-lg active usname" role="button">${sessionScope.USERNAME}</a>
       <%
         } else {
       %>
@@ -86,7 +85,7 @@
             </div>
             <div style="position: relative">
                 <button type="button" class="btn btn-danger writeblog" onClick="window.location.href='edit.jsp'">写 作</button>
-                <button type="button" class="btn btn-primary myfavorite" onClick="window.location.href='myFavorite.jsp'">收 藏</button>
+                <button type="button" class="btn btn-primary myfavorite" onclick="window.location.href='logout.action'">退 出</button>
             </div>
             <div>
                 <img src="public/img/1.jpg" alt="OneBlog" class="img-rounded">

@@ -45,17 +45,19 @@ To change this template use File | Settings | File Templates.
         <div class="col-md-8 postmain">
             <h2>${title}</h2>
             <div class="postinfo">
-                <span>作者：${author}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>日期：${publishTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>阅读量：${count}</span>
+                <div class="alert alert-danger" role="alert">
+                    <span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 作者：${author}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 发表于：${publishTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 热度：${count}℃</span>
+                </div>
             </div>
             <div class="postcontext">
                 ${bowen}
-            </div>
-            <div class="praise myfavorite">
-                <span id="praise"><img src="public/img/zan.png" id="praise-img" /></span>
-                <span id="praise-txt">${zan}</span>
-                <span id="add-num"><em>+1</em></span>
+                <div>
+                    <div style="height: 5px"></div>
+                    <HR width="100%" color=black SIZE=2>
+                </div>
+                ${Comment}
             </div>
         </div>
         <div class="col-md-2"></div>
@@ -75,53 +77,6 @@ To change this template use File | Settings | File Templates.
 <!--JavaScript-->
 <!--busuanzi tongji-->
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!--Favorite-->
-<script src="public/js/jquery-1.8.3.min.js"></script>
-<script>
-    $(function(){
-        $("#praise").click(function(){
-            var praise_img = $("#praise-img");
-            var text_box = $("#add-num");
-            var praise_txt = $("#praise-txt");
-            var num=parseInt(praise_txt.text());
-            if(praise_img.attr("src") == ("public/img/yizan.png")){
-                $(this).html("<img src='public/img/zan.png' id='praise-img' class='animation' />");
-                praise_txt.removeClass("hover");
-                text_box.show().html("<em class='add-animation'>-1</em>");
-                $(".add-animation").removeClass("hover");
-                num -=1;
-                praise_txt.text(num)
-            }else{
-                $(this).html("<img src='public/img/yizan.png' id='praise-img' class='animation' />");
-                praise_txt.addClass("hover");
-                text_box.show().html("<em class='add-animation'>+1</em>");
-                $(".add-animation").addClass("hover");
-                num +=1;
-                praise_txt.text(num)
-            }
-        });
-    })
-</script>
-<script type="text/javascript">
-    function praise(recordNo, praiseCount) {
-        $.ajax({
-            url: 'myFavorite.action',
-            type: 'POST',
-            data: {
-                'recordNo': recordNo
-            },
-            dataType: "JSON",
-            success: function(d) {
-                if (d.success) {
-                    var strategyPraiseNo = parseInt(praiseCount) + 1;
-                    $('#praiseNo' + recordNo).html(strategyPraiseNo)
-                }
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                bootbox.alert("无法连接服务器:" + textStatus);
-            }
-        });
-    }
-</script>
 </body>
 </html>
+

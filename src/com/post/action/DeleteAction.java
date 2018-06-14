@@ -42,16 +42,13 @@ public class DeleteAction extends ActionSupport {
                 System.out.println("删除失败！");
             }
             pstmt.close();
-            System.out.println("删除1");
             conn.close();
-            System.out.println("删除2");
         } catch(ClassNotFoundException e){
             System.out.println("No Drive!");
             e.printStackTrace();
         } catch(Exception e){
             e.printStackTrace();
         }
-        System.out.println("删除3");
         return back;
     }
 }

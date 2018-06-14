@@ -16,6 +16,7 @@ public class FullTextAction extends ActionSupport{
     private int count;
     private String bowen;
     private int zan;
+    private String Comment;
     @Getter
     public String getPostId() {
         return postId;
@@ -72,6 +73,14 @@ public class FullTextAction extends ActionSupport{
     public void setZan(int zan) {
         this.zan = zan;
     }
+    @Getter
+    public String getComment() {
+        return Comment;
+    }
+    @Setter
+    public void setComment(String comment) {
+        Comment = comment;
+    }
 
     @Override
     public String execute() throws Exception {
@@ -94,15 +103,43 @@ public class FullTextAction extends ActionSupport{
                 this.title = rs.getString("title");
                 this.bowen = rs.getString("content");
                 this.publishTime = rs.getString("publishtime");
-                this.author = rs.getString("uid");
                 this.count = rs.getInt("count") + 1;
                 this.zan = rs.getInt("zan");
             }
             pstmt.close();
-            String sql2="UPDATE post SET count=?" + " where id="+pid;
+            rs.close();
+            String sql2="SELECT * FROM user WHERE user.id IN (SELECT uid FROM post WHERE post.id = " + pid +")";  //嵌套查询
             pstmt = conn.prepareStatement(sql2);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                this.author = rs.getString("username");
+            }
+            pstmt.close();
+            String sql3="UPDATE post SET count=?" + " where id="+pid;
+            pstmt = conn.prepareStatement(sql3);
             pstmt.setInt(1, count);
             pstmt.executeUpdate();
+            this.Comment = "<!-- 来必力City版安装代码 -->\n" +
+                    "            <div id='lv-container' data-id='city' data-uid='MTAyMC8yODk0My81NTEy'>\n" +
+                    "                <script type='text/javascript'>\n" +
+                    "                    window.livereOptions = {" +
+                    "                         refer:'http://localhost:8080/fullText.action?postId=" + pid + "' " +
+                    "                       };" +
+                    "                    (function(d, s) {\n" +
+                    "                        var j, e = d.getElementsByTagName(s)[0];\n" +
+                    "\n" +
+                    "                        if (typeof LivereTower === 'function') { return; }\n" +
+                    "\n" +
+                    "                        j = d.createElement(s);\n" +
+                    "                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';\n" +
+                    "                        j.async = true;\n" +
+                    "\n" +
+                    "                        e.parentNode.insertBefore(j, e);\n" +
+                    "                    })(document, 'script');\n" +
+                    "                </script>\n" +
+                    "                <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>\n" +
+                    "            </div>\n" +
+                    "            <!-- City版安装代码已完成 -->";
             back = "success";
             rs.close();
             conn.close();
