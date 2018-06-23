@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.sun.deploy.net.proxy.UserDefinedProxyConfig;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.Cookie;
@@ -58,7 +59,8 @@ public class SigninAction extends ActionSupport {
         String url = "jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=true"; //URL指向访问的数据库名blog
         /*-------------------------------------*/
         String idr = this.getUserId();
-        String pwd = this.getPassword();
+        String pwd = DigestUtils.md5Hex(this.getPassword());
+        System.out.println("md5Hex:" + pwd);
         String back = null;
         try {
             Class.forName(driver);                                                        //加载驱动程序

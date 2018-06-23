@@ -53,7 +53,7 @@
                 </div>
                 <div class="input-group info_pwd">
                     <span class="input-group-addon" id="sizing-addon3">√‹¬Î</span>
-                    <input type="password" class="form-control" name="password" aria-describedby="sizing-addon2" value=${password}>
+                    <input type="password" class="form-control" name="password" aria-describedby="sizing-addon2" placeholder="±£¥Ê–ﬁ∏ƒ–ËÃÓ»Î√‹¬Î£°">
                 </div>
                 <div class="input-group info_email">
                     <span class="input-group-addon" id="sizing-addon4">” œ‰</span>

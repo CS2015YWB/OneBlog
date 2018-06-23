@@ -5,7 +5,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.struts2.ServletActionContext;
+import sun.security.provider.MD5;
 
 
 public class SignupAction extends ActionSupport{
@@ -74,6 +76,8 @@ public class SignupAction extends ActionSupport{
             this.setMessage("用户名字符位数不足！");
             back = "error";
         }else{
+            String pwdMd5 = DigestUtils.md5Hex(pwd1);
+            System.out.println("md5Hex:" + pwdMd5);
             try {
                 System.out.println("恭喜！密码输入正确！");
                 Class.forName(driver);                                                        //加载驱动程序
@@ -81,7 +85,7 @@ public class SignupAction extends ActionSupport{
                 System.out.println("数据库连接成功……");
                 String sql="INSERT INTO user" + "(password,username)VALUES(?,?)";
                 PreparedStatement pstat = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                pstat.setString(1, pwd1);
+                pstat.setString(1, pwdMd5);
                 pstat.setString(2, uname);
                 pstat.executeUpdate();
                 ResultSet rs = pstat.getGeneratedKeys();
