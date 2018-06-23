@@ -2,9 +2,7 @@
 
 # 一个博客
 
-@(框架)[Struts2|BootStrap3.0|JQuery1.9.0|Editor.md1.5.0|LiveRe|不蒜子]
-
-@()[项目名称:[OneBlog](https://github.com/CS2015YWB/OneBlog)|开发者:[CS2015YWB](https://github.com/CS2015YWB) |时间:2018年6月]
+[![Struts2](https://img.shields.io/badge/Struts-2.0-brightred.svg)](#)  [![Struts2](https://img.shields.io/badge/BootStrap-3.0-brightred.svg)](#) [![Struts2](https://img.shields.io/badge/jQuery-1.9.0-brightred.svg)](#) [![Struts2](https://img.shields.io/badge/Editor.md-1.5.0-brightred.svg)](#) [![Struts2](https://img.shields.io/badge/LiveRe-City-brightred.svg)](#) [![Struts2](https://img.shields.io/badge/busuanzi-2.4-brightred.svg)](#) [![Struts2](https://img.shields.io/badge/Project-OneBlog-brightred.svg)](https://github.com/CS2015YWB/OneBlog) [![Struts2](https://img.shields.io/badge/PowerBy-CS2015YWB-brightred.svg)](https://github.com/CS2015YWB)
 
 ## 安装启动方法
 - `git clone git@github.com:CS2015YWB/OneBlog.git`
@@ -31,5 +29,5 @@
 |删除文章|delete.action|
 |模糊搜索相关文章|search.action|
 
+# 
  > Created By  [静水Lion](http://csyanwb.cn)
-
